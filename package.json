@@ -1,0 +1,19 @@
+{
+  "name": "mytd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.7.2",
+    "bulma": "^0.7.5",
+    "electron": "^6.0.3",
+    "electron-prebuilt": "^1.4.13",
+    "electron-reload": "^1.5.0",
+    "ytdl-core": "^0.29.5"
+  }
+}

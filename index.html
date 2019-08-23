@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mYTD">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./node_modules/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="main.css">
+    <title>mYTD - Milan's Youtube Downloader</title>
+</head>
+
+<body ng-controller="mainController">
+    <div class="container">
+        <h1 class="is-size-1 has-text-white	">Youtube Downloader</h1>
+        <div class="field has-addons">
+            <div class="control is-expanded">
+                <input id="url" ng-model="urlInput" class="input is-large" type="text" placeholder="Youtube video url.....">
+            </div>
+            <div class="control">
+                <button ng-click="downloadClicked()" class="button is-danger is-large" id="downloadBtn">Download</button>
+            </div>
+        </div>
+        <div>
+        </div>
+        <!-- Spinner -->
+        <div ng-if="isLoading" id="loader" class="loader">Loading...</div>
+        <div ng-if="metadata" class="content-holder" id="contentHolder">
+            <div class="media">
+                <div class="media-left">
+                    <figure class="image image is-500x500">
+                        <img ng-src="{{metadata.player_response.videoDetails.thumbnail.thumbnails[3].url}}" alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="title is-4">{{metadata.title}}</p>
+                    <br>
+                    <p class="subtitle is-6">{{metadata.description}}</p>
+                </div>
+            </div>
+            <div class="size-buttons">
+                <a ng-repeat="i in metadata.formats" class="button is-link is-outlined" download href="{{i.url}}">{{i.size || i.quality}}</a>
+            </div>
+        </div>
+
+        <div class="list-area"></div>
+    </div>
+
+
+    <script src="renderer.js"></script>
+</body>
+
+</html>
