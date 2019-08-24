@@ -1,13 +1,16 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain,dialog } = require('electron')
+const { app, BrowserWindow } = require('electron')
 const path = require('path');
-const ytdlMain = require('ytdl-core');
 
-const ytdl = require("./lib/ytdlHelper")
+
 require('electron-reload')(__dirname, {
     // Note that the path to electron may vary according to the main file
-    electron: require(`${__dirname}/node_modules/electron`)
+    electron: require(`${__dirname}/node_modules/electron`),
+    hardResetMethod: 'exit',
+    ignored: /node_modules|db\.store|sound\.mp4/
 });
+
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -16,18 +19,22 @@ let mainWindow
 function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 700,
+        height: 400,
+        titleBarStyle: 'customButtonsOnHover',
         webPreferences: {
+            nodeIntegrationInWorker: true,
             nodeIntegration: true
-        }
+        },
+        frame: false
     })
 
     // and load the index.html of the app.
     mainWindow.loadFile('index.html')
 
+    
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools({mode:'undocked'})
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
@@ -60,20 +67,4 @@ app.on('activate', function () {
 // code. You can also put them in separate files and require them here.
 
 
-ipcMain.on("video:getMetadata", function (event, data) {
-    ytdl.getInfo(data).then(function (metadata) {
-        event.reply('video:metadata', metadata)
-    })
-});
-
-ipcMain.on("video:download",function(event,data){
-    let {url,path} = data;
-    // let savePath = dialog.showSaveDialogSync(mainWindow,{title:"Save Video mYTD"});
-    if(path){
-        ytdl.download(url,path).then(function(data1){
-            console.log(data1)
-        })
-    }else{
-        console.log("Invalid Path");
-    }
-})
+// require('./lib/mainProcess');

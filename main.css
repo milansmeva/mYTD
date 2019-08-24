@@ -1,35 +1,61 @@
 body{
     margin:0;
     padding:0;
-    background: #2ecc71;
+    background: #1abc9c;
     min-height:100vh;
 }
-
-.content-holder{
-    display:flex;
-    justify-content: center;
-    background:white;
-    padding: 18px;
-    margin-top: 100px;
-}
-.content-holder>div:first-child{
-    width: 80%;
+::-webkit-scrollbar {
+  display: none;
 }
 
-.is-500x500{
-    width:300px;
-    height:300px;
+.container{
+  width: 80%;
 }
 
-.size-buttons{
-    
-    display: flex;
-    flex-direction: column;
+header nav{
+  display: flex;
+  justify-content: space-between;
+  background: #2c3e50;
+  color: #ecf0f1 !important;
+  margin-bottom: 36px;
 }
-.size-buttons button{
-    margin-bottom: 18px;
+nav .title{
+  width: 80%;
+  -webkit-app-region:drag;
+  color: #ecf0f1 !important;
+  padding:12px;
+  margin: 0 !important;
 }
 
+nav .actions{
+  display: flex;
+  width: 98px;
+  justify-content: center;
+}
+.actions button{
+  width:49px;
+  border: none;
+  background: transparent ;
+}
+.actions button:hover{
+  background: ivory ;
+}
+
+button img{
+  width: 24px;
+}
+
+.search{
+  margin-bottom: 24px;
+}
+
+.main-content{
+  width: 80%;
+  margin: auto;
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+}
 /* Spinner Css */
 .loader,
 .loader:before,
