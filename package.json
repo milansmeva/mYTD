@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.19",
-    "angular": "^1.7.2",
+    "angular": "^1.7.9",
     "bulma": "^0.7.5",
     "electron": "^6.0.3",
     "electron-prebuilt": "^1.4.13",
