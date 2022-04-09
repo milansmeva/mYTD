@@ -19,7 +19,7 @@
     "ffmpeg-static": "^2.5.0",
     "fluent-ffmpeg": "^2.1.2",
     "font-awesome": "^4.7.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "nedb": "^1.8.0",
     "youtube-dl": "^2.0.1",
     "youtube.get-video-info": "^1.0.1",
